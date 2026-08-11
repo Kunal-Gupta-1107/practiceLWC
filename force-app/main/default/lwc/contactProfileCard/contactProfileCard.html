@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Contact Profile Card" icon-name="utility:user"> 
+        <div class="slds-p-around_medium"> 
+            <div class="slds-grid">
+                   
+                <!-- Contact Photo -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4 slds-align_absolute-center"> 
+                        <template lwc:if = {photoUrl}> 
+                            <img src={photoUrl} alt="Contact's Photo">
+                        </template>
+                        <template lwc:else>
+                            <lightning-avatar fallback-icon-name="utility:user" size="large"> </lightning-avatar>
+                        </template>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-4" > 
+                        <h1>Name : {salutation} {name} </h1>
+                        <!-- <h1>{fullName}</h1> -->
+                        <p> Title : {title}</p>
+                        <p> Department : {department}</p>
+                        <p> Email :  
+                            <template lwc:if={email}> 
+                                <a href={emailLink}> {email}</a>
+                            </template> 
+                            <template lwc:else>
+                                Email not Available!
+                            </template>
+                        </p>
+                        <p> Phone :  
+                            <template lwc:if={phone}> 
+                                <a href={phoneLink}> {phone}</a>
+                            </template> 
+                            <template lwc:else>
+                                Phone not Available!
+                            </template>
+                        </p>
+                        <p> Account : {account}</p>
+                    </div>
+
+            </div>
+        </div>
+    </lightning-card>
+    
+    
+</template>

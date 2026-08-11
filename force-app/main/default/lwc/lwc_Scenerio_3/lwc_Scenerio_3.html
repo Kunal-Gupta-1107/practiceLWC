@@ -1,0 +1,15 @@
+<template>
+    <div class= "slds-p-around_medium">
+        <div class="slds-box slds-theme_default slds-m-buttom_medium">
+            <lightning-card title="Account 360 Summary">
+            <template lwc:if={ratingIndicator}>
+                <p>🔥🔥</p>
+            </template>
+                <lightning-record-form record-id={recordId} object-api-name={objApiName} fields={myFields}>
+                
+                </lightning-record-form>
+            </lightning-card>        
+        </div>
+    </div>
+    
+</template>

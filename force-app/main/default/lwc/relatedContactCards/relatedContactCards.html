@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title={cardName} icon-name="standard:contact">
+            
+        <template lwc:if={hasContactRecords}>
+            <div class="slds-grid slds-wrap">
+                
+                <template for:each={contactRecords} for:item="contact">
+
+                    <div class="slds-box slds-col slds-size_1-of-2 slds-m-bottom_medium" key={contact.Id}>
+                        <lightning-card icon-name="standard:contact" class="slds-m-bottom_small">
+
+                            <h3 slot="title"><p>{contact.FirstName} {contact.LastName}</p></h3>
+                            
+                            <div >
+                                <div class="slds-grid slds-m-bottom_xx-small">
+                                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Title:</div>
+                                    <div class="slds-col slds-size_1-of-2">{contact.Title}</div>
+                                </div>
+                                
+                                <div class="slds-grid slds-m-bottom_xx-small">
+                                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Email:</div>
+                                    <div class="slds-col slds-size_1-of-2">{contact.Email}</div>
+                                </div>
+                                
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Phone:</div>
+                                    <div class="slds-col slds-size_1-of-2">{contact.Phone}</div>
+                                </div>
+                            </div>
+                        </lightning-card>
+
+                    </div>
+
+                </template>
+            </div>
+        </template>
+
+        <template lwc:else>
+            <div class="slds-box slds-theme_default">
+                <p class="slds-text-align_center">No related contacts found for this account.</p>
+            </div>
+        </template>
+
+        
+    </lightning-card>
+</template>

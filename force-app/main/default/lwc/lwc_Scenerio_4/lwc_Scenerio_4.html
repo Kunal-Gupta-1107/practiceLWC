@@ -1,0 +1,9 @@
+<template>
+    
+    <lightning-input label="Contact Name" onchange={nameHandler}></lightning-input>
+    <lightning-datatable
+        key-field="Id"
+        data={contactRecords}
+        columns={cols}>
+    </lightning-datatable>
+</template>

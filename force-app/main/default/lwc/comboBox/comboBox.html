@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-p-around_medium">
+        <div class="slds-box slds-theme_default slds-m-bottom_medium">
+    <lightning-card title="Rating Combobox"> 
+            <lightning-combobox 
+                    label="Rating"
+                    variant="label-inline"
+                    placeholder="select rating"
+                    value={ratingValues}
+                    options={ratingOptions}
+                    onchange={handleChange}> 
+            </lightning-combobox>
+
+            <br></br>
+
+            <lightning-datatable
+                key-field="Id"
+                data={accountRecords}
+                columns={cols}
+                hide-checkbox-column="true">
+            </lightning-datatable>
+        </lightning-card>
+    </div>
+    </div>
+</template>
