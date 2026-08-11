@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Lead Qualifiation Form" icon-name="standard:lead">
+        <div class="slds-p-horizontal_small">
+            <lightning-record-edit-form object-api-name="Lead" onsuccess={successHandler}>
+                <lightning-messages></lightning-messages>
+                <lightning-input-field field-name="Name" required></lightning-input-field>
+                <lightning-input-field field-name="Company" required></lightning-input-field>
+                <lightning-input-field field-name="Title"></lightning-input-field>
+                <lightning-input-field field-name="Email" required type="email" ></lightning-input-field>
+                <lightning-input-field field-name="Mobile"></lightning-input-field>
+                <lightning-input-field field-name="Phone" min-length="10" message-when-too-short="Enter 10 Digit Number" max-length="10"></lightning-input-field>
+                <lightning-combobox label="Lead Status" placeholder="Select Status" required value={statusValue} options={statusOptions} onchange={statusHandler}></lightning-combobox>
+                <lightning-combobox label="Lead Source" placeholder="Select Lead Source" value={sourceValue} options={sourceOptions} onchange={sourceHandler}></lightning-combobox>
+                <lightning-combobox label = "Industry" placeholder="Select Industry" value={industryValue} options={industryOptions} onchange={industryHandler}></lightning-combobox>
+
+                <lightning-button varient="brand" type="submit" label="Save"></lightning-button>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>

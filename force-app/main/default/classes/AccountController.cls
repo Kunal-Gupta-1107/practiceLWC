@@ -9,4 +9,10 @@ public class AccountController {
     public static List<Contact> getRelCon(String accId){
         return [SELECT Id, FirstName, LastName, Phone, Email, Title,AccountId From Contact Where AccountId = :accId];
     }
+
+    @AuraEnabled(cacheable = true)
+    public static List<Account> getSearchedAccounts(String name) {
+        String named = '%'+ name + '%';
+        return [SELECT Id, Name, Rating, Industry, Phone, Active__c FROM Account where Name Like :named];
+    }
 }

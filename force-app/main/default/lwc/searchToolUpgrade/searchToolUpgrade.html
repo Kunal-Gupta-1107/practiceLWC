@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Search Tool Using _____" icon-name="standard:account">
+        <div class="slds-box">
+            <div>
+            <!-- Search input Field -->
+            <lightning-input label="Seach Account" type="text" placeholder="Enter Account Name" value={nameValue} onchange={nameHanlder}></lightning-input>
+
+            <!-- Search Button -->
+             <lightning-button label="Search" variant="brand" onclick={searchHandler}></lightning-button>
+
+            </div>
+
+            <template lwc:if={isLoading}>
+                 <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+            </template>
+
+            <lightning-datatable key-field="Id" columns={cols} data={recordData} hide-checkbox-column="true"></lightning-datatable>
+            
+            <template lwc:if={noRecord}>
+                <p style="color:red;"> No Record Found</p> {errorMsg}
+            </template>
+        </div>
+    </lightning-card>
+</template>

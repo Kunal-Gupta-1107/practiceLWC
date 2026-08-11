@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Dynamic and Reusable Record View Form" icon-name="standard:Case">
+        <div class="slds-m-around_medium">
+            <lightning-record-form record-id={recordId} object-api-name={objectApiName}>
+                <lightning-output-field field-name={fields.subject}></lightning-output-field>
+                <lightning-output-field field-name={fields.description}></lightning-output-field>
+                <lightning-output-field field-name={fields.status}></lightning-output-field>
+                <lightning-output-field field-name={fields.priority}></lightning-output-field>
+            </lightning-record-form>
+        </div>
+    </lightning-card>
+</template>

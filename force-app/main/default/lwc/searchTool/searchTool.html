@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-box">
+    <lightning-card title="Search Tool Using LWC">
+        <lightning-input label="Account" title="Account Records" placeholder="Enter Account Name" type="text" message-when-bad-input="Enter only Text" value={nameValue} onchange={nameHandler}></lightning-input>
+
+        <lightning-datatable
+                key-field="Id"
+                data={accountRecords}
+                columns={cols}
+                hide-checkbox-column="true">
+        </lightning-datatable>
+        
+        <template lwc:if={showError}>
+            <p style="color:red;">No Record Found</p>
+        </template>
+
+    </lightning-card>
+    </div>
+</template>
