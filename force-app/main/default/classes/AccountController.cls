@@ -15,4 +15,23 @@ public class AccountController {
         String named = '%'+ name + '%';
         return [SELECT Id, Name, Rating, Industry, Phone, Active__c FROM Account where Name Like :named];
     }
+
+    public class wrapper{
+        @AuraEnabled public String stageName;
+        @AuraEnabled public Decimal amount;
+        
+        public wrapper(String stageName, Decimal amount){
+            this.stageName = stageName;
+            this.amount = amount;
+        }
+    }
+
+    @AuraEnabled(cacheable = true)
+    public static List<wrapper> getOpps(){
+        List<wrapper> opps = new List<wrapper>();
+        for(AggregateResult ar : [SELECT stageName, sum(amount) from Opportunity where LastModifiedDate = LAST_N_DAYS:30 group by StageName]){
+            opps.add(new wrapper((String)ar.get('StageName'), (Decimal)ar.get('total')));
+        }
+        return opps;
+    }
 }

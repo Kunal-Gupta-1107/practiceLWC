@@ -1,0 +1,44 @@
+<template>
+    <div class="slds-m-around_medium">
+        <lightning-card title="Sales Summary" icon-name="standard:opportunity">
+            <div class="slds-grid slds-gutters_x-small slds-var-p-around_medium">
+                
+
+                <!-- Column 1 -->
+                <div class="slds-col slds-size_1-of-4">
+                    <div class="slds-box slds-text-align_center">
+                        <strong>Total Revenue</strong>
+                        <h1 class="slds-text-heading_large">{totalRevenue}</h1>
+                    </div>
+
+                </div>
+
+                <!-- Column 2 -->
+                <div class="slds-col slds-size_1-of-4">
+                    <div class="slds-box slds-text-align_center">
+                        <strong>Total Gain</strong>
+                        <h1 class="slds-text-heading_large">{totalGain}</h1>
+                    </div>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="slds-col slds-size_1-of-4">
+                    <div class="slds-box slds-text-align_center">
+                        <strong>Total Loss</strong>
+                        <h1 class="slds-text-heading_large">{totalLoss}</h1>
+                    </div>
+                </div>
+
+                <!-- Column 4 -->
+                <div class="slds-col slds-size_1-of-4">
+                    <div class="slds-box slds-text-align_center">
+                        <strong>Open</strong>
+                        <h1 class="slds-text-heading_large">{totalOpen}</h1>
+                    </div>
+                </div>
+
+
+            </div>
+        </lightning-card>
+    </div>
+</template>

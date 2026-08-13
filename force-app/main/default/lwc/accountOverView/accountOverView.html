@@ -1,0 +1,74 @@
+<template>
+    <lightning-card title="Account Overview" icon-name="standard:account">
+        
+        <!-- Header Actions (Refresh and More Options) -->
+        <div slot="actions">
+            <lightning-button-icon icon-name="utility:refresh" variant="brand" alternative-text="Refresh" class="slds-m-right_x-small"></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:threedots" variant="bare" alternative-text="More Options"></lightning-button-icon>
+        </div>
+
+        <div class="slds-grid slds-p-horizontal_medium slds-p-bottom_medium">
+            
+            <div class="slds-col slds-size_1-of-2 slds-p-right_medium slds-border_right">
+                
+                <div class="slds-grid slds-m-bottom_small">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Account Name</div>
+                    <div class="slds-col slds-size_1-of-2">Acme Corporation</div>
+                </div>
+
+                <div class="slds-grid slds-m-bottom_small">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Type</div>
+                    <div class="slds-col slds-size_1-of-2">Customer</div>
+                </div>
+
+                <div class="slds-grid slds-m-bottom_small">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Industry</div>
+                    <div class="slds-col slds-size_1-of-2">Manufacturing</div>
+                </div>
+
+                <div class="slds-grid slds-m-bottom_small">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Phone</div>
+                    <div class="slds-col slds-size_1-of-2">(415) 555-1234</div>
+                </div>
+
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Website</div>
+                    <div class="slds-col slds-size_1-of-2">www.acme.com</div>
+                </div>
+
+            </div>
+
+            <!-- Right Column -->
+            <div class="slds-col slds-size_1-of-2 slds-p-left_medium">
+                
+                <div class="slds-grid slds-m-bottom_small">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Account Owner</div>
+                    <div class="slds-col slds-size_1-of-2">John Smith</div>
+                </div>
+
+                <div class="slds-grid slds-m-bottom_small">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Employees</div>
+                    <div class="slds-col slds-size_1-of-2">1,250</div>
+                </div>
+
+                <div class="slds-grid slds-m-bottom_small">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Annual Revenue</div>
+                    <div class="slds-col slds-size_1-of-2">$12,500,000</div>
+                </div>
+
+                <div class="slds-grid slds-m-bottom_small slds-align-middle">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Account Status</div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <span class="custom-badge-success">Active</span>
+                    </div>
+                </div>
+
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-2 slds-text-color_weak">Rating</div>
+                    <div class="slds-col slds-size_1-of-2">Hot</div>
+                </div>
+
+            </div>
+        </div>
+    </lightning-card>
+</template>
