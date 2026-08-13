@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-m-around_medium slds-box">
+        <lightning-card title="Imperative Insertion Using Record API" icon-name="standard:account">
+            <lightning-input label="Account Name" value={name} onchange={nameHandler} required></lightning-input>
+            <lightning-input label="Account Rating" value={rating} onchange={ratingHandler}></lightning-input>
+            <lightning-input label="Account Phone" value={phone} onchange={phoneHandler} min-length="10" max-length="10" ></lightning-input>
+            <lightning-input label="Account Industry" value={industry} onchange={IndustryHandler}></lightning-input>
+            <lightning-input label="Account Description" value={description} onchange={descriptionHandler}></lightning-input>
+
+            <template lwc:if={isLoading}>
+                <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+            </template>
+
+            <lightning-button class="slds-align_absolute-center slds-m-top_medium" label="Create Account" variant="brand" onclick={buttonHandler}></lightning-button>
+        </lightning-card>
+    </div>                      
+</template>
