@@ -4,7 +4,9 @@ export default class AccountContactViewerParentComponent extends LightningElemen
 
     selectedAccountId;
     handleAccountChange(event){
-        this.selectedAccountId = event.detail.recordId;
+        this.selectedAccountId = event.detail.recordId; 
+        //don't use event.target.value; coz it will give you undefined result
+        // don't use event.detail.value it's somewhere correct but it won't give anything so uise which i used above
     }
     
 }
