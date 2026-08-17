@@ -119,6 +119,37 @@ public class AccountTriggerHandler {
         for(AggregateResult ag : [SELECT ParentId accId,count(Id) totalChildAcc from Account Where Id IN: accMap.keySet() group by ParentId]){
             idToIntMap.put((Id)ag.get('accId'),(Integer)ag.get('totalChildAcc'));
         }
-        
     }
+    public static void phoneValidator(List<Account> accList){
+        for(Account acc:accList){
+            if(acc.phone != Null && acc.phone.length() != 10){
+                acc.phone.addError('Phone Must be of 10 Digit');
+            }
+        }
+    }
+    public static void defaultContact(List<Account> accList){
+        List<Contact> conList = new List<Contact>();
+        for(Account acc: accList) {
+            Contact con = new Contact();
+            con.LastName = acc.Name + 'LN';
+            con.AccountId = acc.Id;
+            con.Phone = acc.Phone;
+            
+            conList.add(con);
+        }
+        
+        if(!conList.isEmpty()){
+            insert conList;
+        }
+    }
+    public static void preventDeletionIfConExist(Map<Id,Account> accMap){
+        List<Contact> conList = [SELECT Id, AccountId From Contact Where Id IN: accMap.KeySet()];
+        for(Contact con: conList){
+            if(accMap.containsKey(con.AccountId)){
+                Account acc = New Account(Id = con.AccountId);
+                acc.AddError('Can not Delete');
+            }
+        }
+    }
+    
 }

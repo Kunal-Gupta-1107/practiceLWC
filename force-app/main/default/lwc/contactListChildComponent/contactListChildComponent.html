@@ -1,0 +1,11 @@
+<template>
+    <div class="slds-p-top-medium">
+        <template if:false={isNoRecord}>
+            <lightning-datatable key-field="Id" data={conRecord} columns={cols} hide-checkbox-column="true"></lightning-datatable>
+        </template>
+
+        <template if:true={isNoRecord}>
+            <p style="color: red; font-size: 20px;"> No Record Found 😵</p>
+        </template>
+    </div>
+</template>

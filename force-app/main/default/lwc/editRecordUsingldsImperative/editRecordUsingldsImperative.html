@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Lightning Data Services">
+        <lightning-input label="Name" onchange={nameHandler}></lightning-input>
+        <lightning-input label="Phone" onchange={phoneHandler}></lightning-input>
+        <lightning-input label="Fax" onchange={faxHandler}></lightning-input>
+        <lightning-input label="Description" onchange={desHandler}></lightning-input>
+        
+        <lightning-button label="Save Edit" onclick={buttonHandler}></lightning-button>
+        <template lwc:if={isLoading}>
+            <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+        </template>
+    </lightning-card>
+</template>

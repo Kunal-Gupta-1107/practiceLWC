@@ -1,0 +1,14 @@
+<template>
+    <!-- No need to provide target to child coz, it will be displayed in parent component
+    so give parent the targets -->
+    <div class="slds-box">
+    <lightning-card title="Account Contact Viewer (Parent Child Communication)" icon-name="standard:account">
+        <div class="slds-p-around-small">
+            <lightning-record-picker label="Account Name" object-api-name="Account" onchange={handleAccountChange} value={selectedAccountId}></lightning-record-picker>
+        </div>
+        
+        <c-contact-list-child-component account-id={selectedAccountId}></c-contact-list-child-component>
+        
+    </lightning-card>
+    </div>
+</template>
