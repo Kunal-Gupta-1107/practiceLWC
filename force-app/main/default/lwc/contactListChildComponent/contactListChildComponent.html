@@ -1,6 +1,6 @@
 <template>
     <div class="slds-p-top-medium">
-        <template if:false={isNoRecord}>
+        <template if:false={hasRecord}>
             <lightning-datatable key-field="Id" data={conRecord} columns={cols} hide-checkbox-column="true"></lightning-datatable>
         </template>
 

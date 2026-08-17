@@ -5,7 +5,6 @@ export default class AccountContactViewerParentComponent extends LightningElemen
     selectedAccountId;
     handleAccountChange(event){
         this.selectedAccountId = event.detail.recordId;
-        window.alert(this.selectedAccountId);
     }
     
 }
