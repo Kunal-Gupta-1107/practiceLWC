@@ -1,30 +1,29 @@
 public with sharing class Solutions {
     public static void totalCaseCountOnAcc(List<Case> caseList, Map<Id, Case> oldCaseMap){
         Set<Id> accIds = new Set<Id>();
-
         for(Case cs: caseList){
-            if(oldCaseMap == null && cs.AccountId != Null) accIds.add(cs.AccountId);
+            if(oldCaseMap == Null && cs.AccountId != Null){
+                accIds.add(cs.AccountId);
+            }
             else if(cs.AccountId != oldCaseMap.get(cs.Id).AccountId){
                 if(cs.AccountId != Null) accIds.add(cs.AccountId);
                 if(oldCaseMap.get(cs.Id).AccountId != Null) accIds.add(oldCaseMap.get(cs.Id).AccountId);
             }
         }
         if(accIds.isEmpty()) return;
-        Map<Id,Account> accMap = new Map<Id,Account>();
-        for(Id i:accIds){
-            Account ac= new Account(Id = i);
-                    ac.Total_No_of_Cases__c = 0;
-                    accMap.put(ac.Id, ac);
+        Map<Id, Integer> accMap = new Map<Id, Integer>();
+        for(AggregateResult ag: [SELECT AccountId accId ,Count(Id) totalCase from Case Where AccountId IN :accIds group by AccountId]){
+            accMap.put((Id)ag.get('accId'), (Integer)ag.get('totalCase'));
         }
-        if(accMap.isEmpty()) return;
-        for(AggregateResult ag: [SELECT AccountId i, Count(Id) totalCase From Case Where AccountId IN :accIds group by AccountId]){
-            Id accId = (Id)ag.get('i');
-            Integer total = (Integer)ag.get('totalCase');
-            if(accMap.containsKey(accId)){
-                accMap.get(accId).Total_No_of_Cases__c = total;
-            }
+
+        List<Account> recordsToUpdate = new List<Account>();
+        for(Id i: accIds){
+            Integer total = accMap.containsKey(i) ? accMap.get(i) : 0 ;
+            Account ac = new Account(Id = i);
+                    ac.Total_Case_Count__c = total;
+            recordsToUpdate.add(ac);
         }
-        if(!accMap.isEmpty()) update accMap.values();
+
+        if(!recordsToUpdate.isEmpty()) update recordsToUpdate;
     }
-    
 }
