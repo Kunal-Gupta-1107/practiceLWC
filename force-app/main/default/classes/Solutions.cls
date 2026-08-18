@@ -26,4 +26,23 @@ public with sharing class Solutions {
 
         if(!recordsToUpdate.isEmpty()) update recordsToUpdate;
     }
+
+    public static void updateRelatedContactFields(List<Account> accList, map<Id,Account> oldMapAccount){
+        Map<Id,Account> recToUpdateMap = new Map<Id,Account>();
+        for(Account acc : accList){
+            if(oldMapAccount == Null){
+                if(acc.Phone != Null) recToUpdateMap.put(acc.Id,acc);
+            }
+            else if(acc.Phone != oldMapAccount.get(acc.Id).Phone){
+                if(acc.Phone != Null) recToUpdateMap.put(acc.Id,acc);
+            }
+        }
+        if(recToUpdateMap.isEmpty()) return;
+        List<Contact> conList = [SELECT Id, HomePhone, AccountId,Description From Contact Where AccountId IN :recToUpdateMap.keySet()];
+        for(Contact con: conList){
+            con.HomePhone = recToUpdateMap.get(con.AccountId).Phone;
+            con.Description = 'Account Phone Changed To ' + con.HomePhone;
+        }
+        if(!conList.isEmpty()) update conList;
+    }
 }
