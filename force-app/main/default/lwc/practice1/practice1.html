@@ -1,0 +1,7 @@
+<template>
+    <lightning-card title=" Practice Account Contact View (Communication)">
+        <lightning-record-picker label="Account Name" onchange={accountHandler} object-api-name="Account" value={selectedAccount}></lightning-record-picker>
+
+        <c-practice2 account-id={selectedAccount} onselectedcontact={ActionHandler}></c-practice2>
+    </lightning-card>
+</template>
