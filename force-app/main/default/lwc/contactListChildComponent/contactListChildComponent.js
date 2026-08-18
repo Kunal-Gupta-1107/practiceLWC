@@ -6,7 +6,7 @@ const columns = [
     {label: 'First Name', fieldName: 'FirstName', type: 'text'},
     {label: 'Last Name', fieldName: 'LastName', type: 'text'},
     {label: 'Email', fieldName: 'Email', type: 'email'},
-    {label: 'Action', type: 'button', typeAttribute:{
+    {label: 'Action', type: 'button', typeAttributes:{
         label: 'view Contact',
         variant: 'brand',
         name: 'view_contact',
@@ -37,10 +37,15 @@ export default class ContactListChildComponent extends LightningElement {
     actionHandler(event){
         const rowAction = event.detail.action.name;
         const row = event.detail.row;
-        window.alert(Hi);
-        if(rowAction === 'view_contact'){
-            //Custom Event
+        console.log(rowAction);
+        console.log(row.Id);
+        console.log(row.LastName);
+        
+        if(rowAction == 'view_contact'){
+            //Custom Event  
+            console.log('inside condition');
             const c_event = new CustomEvent('selectedcontact', {detail: {contactId: row.Id, lastName: row.LastName}});
+            console.log(c_event);
             this.dispatchEvent(c_event);
         }
     }

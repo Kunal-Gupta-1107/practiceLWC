@@ -1,7 +1,7 @@
 <template>
     <div class="slds-m-top-medium"> <!-- Css isn't working else all good -->
         <template if:false={hasRecord}>
-            <lightning-datatable key-field="Id" data={conRecord} columns={cols} hide-checkbox-column="true" onrowaction={actionHandler}></lightning-datatable>
+            <lightning-datatable key-field="Id" data={conRecord} columns={cols} hide-checkbox-column="true" onrowaction={actionHandler}  show-row-number-column="true" ></lightning-datatable>
         </template>
 
         <template if:true={isNoRecord}>
