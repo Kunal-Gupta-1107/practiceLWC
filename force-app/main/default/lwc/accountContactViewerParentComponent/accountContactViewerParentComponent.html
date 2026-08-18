@@ -7,7 +7,7 @@
             <lightning-record-picker label="Account Name" object-api-name="Account" onchange={handleAccountChange} value={selectedAccountId}></lightning-record-picker>
         </div>
         
-        <c-contact-list-child-component account-id={selectedAccountId}></c-contact-list-child-component>
+        <c-contact-list-child-component account-id={selectedAccountId} selectedcontact={handleContactView}></c-contact-list-child-component>
         
     </lightning-card>
     </div>

@@ -5,7 +5,13 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 const columns = [
     {label: 'First Name', fieldName: 'FirstName', type: 'text'},
     {label: 'Last Name', fieldName: 'LastName', type: 'text'},
-    {label: 'Email', fieldName: 'Email', type: 'email'}
+    {label: 'Email', fieldName: 'Email', type: 'email'},
+    {label: 'Action', type: 'button', typeAttribute:{
+        label: 'view Contact',
+        variant: 'brand',
+        name: 'view_contact',
+        title: 'View Contact'
+    }}
 ];
 
 export default class ContactListChildComponent extends LightningElement {
@@ -24,6 +30,18 @@ export default class ContactListChildComponent extends LightningElement {
         else if(error){
             this.conRecord = undefined;
             this.errors = error.body.message;
+        }
+    }
+
+
+    actionHandler(event){
+        const rowAction = event.detail.action.name;
+        const row = event.detail.row;
+        window.alert(Hi);
+        if(rowAction === 'view_contact'){
+            //Custom Event
+            const c_event = new CustomEvent('selectedcontact', {detail: {contactId: row.Id, lastName: row.LastName}});
+            this.dispatchEvent(c_event);
         }
     }
     // to remove the problem when account id become null and empty list come and when Account's Contact is not available then also null
