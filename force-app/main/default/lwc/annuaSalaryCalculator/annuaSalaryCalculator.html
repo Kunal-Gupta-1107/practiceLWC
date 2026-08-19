@@ -1,0 +1,16 @@
+<template>
+    <div class="slds-box">
+        <lightning-input label="Monthly Salary" onchange={inputHandler} placeholder="Enter Monthly Salary" value={inputSalary}></lightning-input>
+
+        <div class="slds-grid">
+
+            <div class="slds-text-align_left slds-size_1-of-1 slds-medium-size_1-of-2">
+                <lightning-button label="Annual Salary" onclick={buttonHandler} variant="brand" ></lightning-button>
+            </div>
+            <div class="slds-size_1-of-1 slds-medium-size_1-of-2 slds-text-align_right ">
+                Annual Salary : <b>{annualSalary}</b>
+            </div>
+        </div>
+        <template lwc:if={isLoading}><lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner></template>
+    </div>
+</template>
